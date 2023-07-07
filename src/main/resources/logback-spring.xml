@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+<!--            <jsonFormatter-->
+<!--                    class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">-->
+            <jsonFormatter
+                    class="com.identity.platform.logger.JacksonJsonFormatterImpl">
+                <prettyPrint>false</prettyPrint>
+            </jsonFormatter>
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+            <includeContextName>false</includeContextName>
+            <includeThreadName>true</includeThreadName>
+            <includeLoggerName>true</includeLoggerName>
+        </layout>
+    </appender>
+    <appender name="AsyncLogger" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="json"/>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="AsyncLogger"/>
+    </root>
+
+    <logger name="com.identity.platform" level="trace" additivity="false">
+        <appender-ref ref="AsyncLogger"/>
+    </logger>
+
+</configuration>

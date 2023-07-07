@@ -1,0 +1,3 @@
+APP_DATASOURCE_URL: jdbc:mysql://localhost:3306/identity
+APP_DATASOURCE_USERNAME: root
+APP_DATASOURCE_PASSWORD: Password@123

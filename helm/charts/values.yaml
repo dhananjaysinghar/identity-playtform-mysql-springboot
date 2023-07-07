@@ -1,0 +1,14 @@
+deploymentName: identity-platform-local
+hostName: identity-platform.local.test.com
+replicaCount: 1
+imageSecret: NA
+imageName: dhananjayasinghar/identity-platform:latest
+namespace: local
+env: local
+IP_WHITELIST_RANGE: 0.0.0.0/0
+
+configMap:
+  data:
+    APP_DATASOURCE_URL: jdbc:mysql://http://mysql.local.svc.cluster.local:3306/identity
+    APP_DATASOURCE_USERNAME: root
+    APP_DATASOURCE_PASSWORD: Password@123
